@@ -1,0 +1,35 @@
+---
+title: "Linear Regression R"
+Nama: Yafi Hudatama Wibowo
+Nim: 19523224
+date: "10/24/2020"
+output:html_document:
+    df_print: paged
+---
+
+# iris flowers datasets
+```{r}
+data("iris")
+dim(iris)
+levels(iris$Species)
+```
+```{r}
+head(iris)
+```
+```{r}
+linear_model <- lm(Sepal.Length ~ Sepal.Width, data = iris)
+linear_model
+```
+```{r}
+linear_model <- lm(Sepal.Length ~ Sepal.Width, data = iris)
+linear_model
+```
+Sepal.Length = 6.5262 + -0.2234*Sepal.Width
+```{r}
+summary(linear_model)
+```
+```{r}
+plot(iris)
+abline(linear_model, col='red')
+```
+

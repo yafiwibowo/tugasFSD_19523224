@@ -1,0 +1,46 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+#the dataset
+library(datasets)
+iris <- read.csv("/Universitas Islam Indonesia/SEMESTER 3/INFORMATIKA/Mata Kuliah/Fundamen Sains Data/TUGAS_P10/Naive_bayes/iris.csv")
+iris
+```
+
+```{r}
+#structure of the data
+data("iris")
+head(iris)
+```
+```{r}
+library(naivebayes)
+library(e1071)
+#Naive Bayes model
+Naive_Bayes_Model=naiveBayes(Species ~., data=iris)
+#printing the model
+Naive_Bayes_Model
+```
+```{r}
+#input new data
+newData <- data.frame(Id = "151", SepalLength = "5.1", SepalWidth = "3.5", PetalLength = "1.3", PetalWidth =  "0.2", Species="setosa")
+newData
+```
+```{r}
+#Predict the new data
+vector_prediction = predict(Naive_Bayes_Model, newData, type = "raw")
+vp = vector_prediction
+vp
+```
+```{r}
+#predict the new data (cont'd)
+yhat_status = colnames(vp)[max.col(vp,ties.method="first")]
+sprintf("y_hat for the new data is '%s'",yhat_status)
+newData$Species <- yhat_status
+newData
+```
+
+
+

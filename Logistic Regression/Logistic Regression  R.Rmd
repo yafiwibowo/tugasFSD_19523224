@@ -1,0 +1,36 @@
+---
+Nim : 19523224
+Nama : Yafi Hudatama Wibowo
+title: "Logistic Linear Regression R"
+date: "10/24/2020"
+output: html_document
+---
+
+```{r}
+iris
+```
+```{r}
+dt <- subset(iris, select = c(Sepal.Length, Sepal.Width, Petal.Length))
+dt
+```
+```{r}
+fit <- glm(formula =  Petal.Length~Sepal.Length, data = iris, family = gaussian)
+summary(fit)
+```
+```{r}
+library(ggplot2)
+```
+```{r}
+ggplot(dt, aes(x=Sepal.Length, y= Petal.Length)) + geom_point()
+  stat_smooth(method = "glm", method.args = list(family="gaussian"), se = FALSE)
+```
+```{r}
+fit2 <- glm(formula =  Petal.Length~Sepal.Length+Petal.Width, data = iris, family = gaussian)
+summary(fit2)
+
+```
+```{r}
+library(predict3d)
+ggPredict(fit2)
+```
+
